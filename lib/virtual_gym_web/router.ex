@@ -24,6 +24,7 @@ defmodule VirtualGymWeb.Router do
   scope "/api", VirtualGymWeb do
     pipe_through :api
     resources "/exercises", ExerciseController, except: [:new, :edit]
+    resources "/iterations", IterationController, except: [:new, :edit]
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
