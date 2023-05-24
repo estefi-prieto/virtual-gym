@@ -21,9 +21,10 @@ defmodule VirtualGymWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", VirtualGymWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", VirtualGymWeb do
+    pipe_through :api
+    resources "/exercises", ExerciseController, except: [:new, :edit]
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:virtual_gym, :dev_routes) do
