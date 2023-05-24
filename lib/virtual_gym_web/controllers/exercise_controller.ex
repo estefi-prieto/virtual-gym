@@ -36,8 +36,8 @@ defmodule VirtualGymWeb.ExerciseController do
   def delete(conn, %{"id" => id}) do
     exercise = Exercises.get_exercise!(id)
 
-    with {:ok, %Exercise{}} <- Exercises.delete_exercise(exercise) do
-      send_resp(conn, :no_content, "")
+    with {:ok, %Exercise{id: id, name: name}} <- Exercises.delete_exercise(exercise) do
+      json(conn, %{id: id, name: name})
     end
   end
 end
