@@ -11,7 +11,6 @@ defmodule VirtualGym.Repo.Migrations.CreateIterations do
       add :isometric_time, :integer
       add :concentric_time, :integer
       add :eccentric_time, :integer
-      add :exercise_id, references(:exercises, on_delete: :nothing)
 
       timestamps()
     end

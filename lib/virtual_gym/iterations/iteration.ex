@@ -11,7 +11,6 @@ defmodule VirtualGym.Iterations.Iteration do
     field :repetitions, :integer
     field :rounds, :integer
     field :weight, :string
-    field :exercise_id, :id
 
     timestamps()
   end
