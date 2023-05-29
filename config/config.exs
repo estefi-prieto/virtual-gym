@@ -8,7 +8,8 @@
 import Config
 
 config :virtual_gym,
-  ecto_repos: [VirtualGym.Repo]
+  ecto_repos: [VirtualGym.Repo],
+  generators: [binary_id: true]
 
 # Configures the endpoint
 config :virtual_gym, VirtualGymWeb.Endpoint,
