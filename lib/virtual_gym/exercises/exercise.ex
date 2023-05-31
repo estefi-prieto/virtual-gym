@@ -2,6 +2,7 @@ defmodule VirtualGym.Exercises.Exercise do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "exercises" do
     field :affected_muscles, {:array, :string}
     field :name, :string

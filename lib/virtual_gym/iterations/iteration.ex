@@ -2,6 +2,7 @@ defmodule VirtualGym.Iterations.Iteration do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "iterations" do
     field :concentric_time, :integer
     field :eccentric_time, :integer

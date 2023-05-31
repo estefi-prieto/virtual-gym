@@ -2,7 +2,8 @@ defmodule VirtualGym.Repo.Migrations.CreateIterations do
   use Ecto.Migration
 
   def change do
-    create table(:iterations) do
+    create table(:iterations, primary_key: false) do
+      add :id, :binary_id, primary_key: true
       add :rounds, :integer
       add :repetitions, :integer
       add :weight, :string
@@ -14,7 +15,5 @@ defmodule VirtualGym.Repo.Migrations.CreateIterations do
 
       timestamps()
     end
-
-    create index(:iterations, [:exercise_id])
   end
 end
