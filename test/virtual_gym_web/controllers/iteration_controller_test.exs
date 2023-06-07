@@ -25,7 +25,16 @@ defmodule VirtualGymWeb.IterationControllerTest do
     rounds: 43,
     weight: "some updated weight"
   }
-  @invalid_attrs %{concentric_time: nil, eccentric_time: nil, isometric_time: nil, order: nil, pause: nil, repetitions: nil, rounds: nil, weight: nil}
+  @invalid_attrs %{
+    concentric_time: nil,
+    eccentric_time: nil,
+    isometric_time: nil,
+    order: nil,
+    pause: nil,
+    repetitions: nil,
+    rounds: nil,
+    weight: nil
+  }
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
@@ -67,7 +76,10 @@ defmodule VirtualGymWeb.IterationControllerTest do
   describe "update iteration" do
     setup [:create_iteration]
 
-    test "renders iteration when data is valid", %{conn: conn, iteration: %Iteration{id: id} = iteration} do
+    test "renders iteration when data is valid", %{
+      conn: conn,
+      iteration: %Iteration{id: id} = iteration
+    } do
       conn = put(conn, ~p"/api/iterations/#{iteration}", iteration: @update_attrs)
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 

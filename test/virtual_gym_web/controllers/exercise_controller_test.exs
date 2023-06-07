@@ -55,7 +55,10 @@ defmodule VirtualGymWeb.ExerciseControllerTest do
   describe "update exercise" do
     setup [:create_exercise]
 
-    test "renders exercise when data is valid", %{conn: conn, exercise: %Exercise{id: id} = exercise} do
+    test "renders exercise when data is valid", %{
+      conn: conn,
+      exercise: %Exercise{id: id} = exercise
+    } do
       conn = put(conn, ~p"/api/exercises/#{exercise}", exercise: @update_attrs)
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 

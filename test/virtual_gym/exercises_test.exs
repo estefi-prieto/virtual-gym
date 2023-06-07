@@ -21,7 +21,12 @@ defmodule VirtualGym.ExercisesTest do
     end
 
     test "create_exercise/1 with valid data creates a exercise" do
-      valid_attrs = %{affected_muscles: ["option1", "option2"], name: "some name", recomendations: "some recomendations", video: "some video"}
+      valid_attrs = %{
+        affected_muscles: ["option1", "option2"],
+        name: "some name",
+        recomendations: "some recomendations",
+        video: "some video"
+      }
 
       assert {:ok, %Exercise{} = exercise} = Exercises.create_exercise(valid_attrs)
       assert exercise.affected_muscles == ["option1", "option2"]
@@ -36,7 +41,13 @@ defmodule VirtualGym.ExercisesTest do
 
     test "update_exercise/2 with valid data updates the exercise" do
       exercise = exercise_fixture()
-      update_attrs = %{affected_muscles: ["option1"], name: "some updated name", recomendations: "some updated recomendations", video: "some updated video"}
+
+      update_attrs = %{
+        affected_muscles: ["option1"],
+        name: "some updated name",
+        recomendations: "some updated recomendations",
+        video: "some updated video"
+      }
 
       assert {:ok, %Exercise{} = exercise} = Exercises.update_exercise(exercise, update_attrs)
       assert exercise.affected_muscles == ["option1"]

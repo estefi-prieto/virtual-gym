@@ -16,8 +16,8 @@ defmodule VirtualGymWeb.CoreComponents do
   """
   use Phoenix.Component
 
-  alias Phoenix.LiveView.JS
   import VirtualGymWeb.Gettext
+  alias Phoenix.LiveView.JS
 
   @doc """
   Renders a modal.
