@@ -25,7 +25,8 @@ defmodule VirtualGymWeb.IterationJSON do
       pause: iteration.pause,
       isometric_time: iteration.isometric_time,
       concentric_time: iteration.concentric_time,
-      eccentric_time: iteration.eccentric_time
+      eccentric_time: iteration.eccentric_time,
+      serie_id: iteration.serie_id
     }
   end
 end

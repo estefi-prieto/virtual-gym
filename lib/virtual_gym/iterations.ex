@@ -35,7 +35,9 @@ defmodule VirtualGym.Iterations do
       ** (Ecto.NoResultsError)
 
   """
-  def get_iteration!(id), do: Repo.get!(Iteration, id)
+  def get_iteration!(id) do
+    Repo.get!(Iteration, id)
+  end
 
   @doc """
   Creates a iteration.

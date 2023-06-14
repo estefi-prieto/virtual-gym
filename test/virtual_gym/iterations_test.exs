@@ -8,7 +8,16 @@ defmodule VirtualGym.IterationsTest do
 
     import VirtualGym.IterationsFixtures
 
-    @invalid_attrs %{concentric_time: nil, eccentric_time: nil, isometric_time: nil, order: nil, pause: nil, repetitions: nil, rounds: nil, weight: nil}
+    @invalid_attrs %{
+      concentric_time: nil,
+      eccentric_time: nil,
+      isometric_time: nil,
+      order: nil,
+      pause: nil,
+      repetitions: nil,
+      rounds: nil,
+      weight: nil
+    }
 
     test "list_iterations/0 returns all iterations" do
       iteration = iteration_fixture()
@@ -21,7 +30,16 @@ defmodule VirtualGym.IterationsTest do
     end
 
     test "create_iteration/1 with valid data creates a iteration" do
-      valid_attrs = %{concentric_time: 42, eccentric_time: 42, isometric_time: 42, order: 42, pause: 42, repetitions: 42, rounds: 42, weight: "some weight"}
+      valid_attrs = %{
+        concentric_time: 42,
+        eccentric_time: 42,
+        isometric_time: 42,
+        order: 42,
+        pause: 42,
+        repetitions: 42,
+        rounds: 42,
+        weight: "some weight"
+      }
 
       assert {:ok, %Iteration{} = iteration} = Iterations.create_iteration(valid_attrs)
       assert iteration.concentric_time == 42
@@ -40,9 +58,21 @@ defmodule VirtualGym.IterationsTest do
 
     test "update_iteration/2 with valid data updates the iteration" do
       iteration = iteration_fixture()
-      update_attrs = %{concentric_time: 43, eccentric_time: 43, isometric_time: 43, order: 43, pause: 43, repetitions: 43, rounds: 43, weight: "some updated weight"}
 
-      assert {:ok, %Iteration{} = iteration} = Iterations.update_iteration(iteration, update_attrs)
+      update_attrs = %{
+        concentric_time: 43,
+        eccentric_time: 43,
+        isometric_time: 43,
+        order: 43,
+        pause: 43,
+        repetitions: 43,
+        rounds: 43,
+        weight: "some updated weight"
+      }
+
+      assert {:ok, %Iteration{} = iteration} =
+               Iterations.update_iteration(iteration, update_attrs)
+
       assert iteration.concentric_time == 43
       assert iteration.eccentric_time == 43
       assert iteration.isometric_time == 43

@@ -1,4 +1,7 @@
 defmodule VirtualGymWeb.Telemetry do
+  @moduledoc """
+  This module allows you to emit events at various stages of an application's lifecycle.
+  """
   use Supervisor
   import Telemetry.Metrics
 
