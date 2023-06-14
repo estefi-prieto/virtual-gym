@@ -28,7 +28,8 @@ defmodule VirtualGymWeb.IterationController do
   def update(conn, %{"id" => id, "iteration" => iteration_params}) do
     iteration = Iterations.get_iteration!(id)
 
-    with {:ok, %Iteration{} = iteration} <- Iterations.update_iteration(iteration, iteration_params) do
+    with {:ok, %Iteration{} = iteration} <-
+           Iterations.update_iteration(iteration, iteration_params) do
       render(conn, :show, iteration: iteration)
     end
   end

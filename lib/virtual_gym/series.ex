@@ -6,6 +6,7 @@ defmodule VirtualGym.Series do
   import Ecto.Query, warn: false
   alias VirtualGym.Repo
 
+  alias VirtualGym.Exercises
   alias VirtualGym.Series.Serie
 
   @doc """

@@ -1,4 +1,7 @@
 defmodule VirtualGym.Series.Serie do
+  @moduledoc """
+    This is the Model, here define struct and validations of an Serie.
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -7,8 +10,9 @@ defmodule VirtualGym.Series.Serie do
   schema "series" do
     field :note, :string
     field :status, :string
-    field :iterations, :binary_id
-    field :exercise_id, :binary_id
+
+    belongs_to :exercise,  VirtualGym.Exercises.Exercise
+    has_many :iterations, VirtualGym.Iterations.Iteration
 
     timestamps()
   end
@@ -16,7 +20,7 @@ defmodule VirtualGym.Series.Serie do
   @doc false
   def changeset(serie, attrs) do
     serie
-    |> cast(attrs, [:note, :status])
-    |> validate_required([:note, :status])
+    |> cast(attrs, [:note, :status, :exercise_id])
+    |> validate_required([:note, :status, :exercise_id])
   end
 end
