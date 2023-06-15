@@ -20,7 +20,8 @@ defmodule VirtualGymWeb.SerieJSON do
       id: serie.id,
       note: serie.note,
       status: serie.status,
-      exercise_id: serie.exercise_id
+      exercise_id: serie.exercise_id,
+      super_serie_id: serie.super_serie_id
     }
   end
 end
