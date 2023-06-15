@@ -34,12 +34,16 @@ defmodule VirtualGym.SuperSeriesTest do
       super_serie = super_serie_fixture()
       update_attrs = %{}
 
-      assert {:ok, %SuperSerie{} = super_serie} = SuperSeries.update_super_serie(super_serie, update_attrs)
+      assert {:ok, %SuperSerie{} = super_serie} =
+               SuperSeries.update_super_serie(super_serie, update_attrs)
     end
 
     test "update_super_serie/2 with invalid data returns error changeset" do
       super_serie = super_serie_fixture()
-      assert {:error, %Ecto.Changeset{}} = SuperSeries.update_super_serie(super_serie, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               SuperSeries.update_super_serie(super_serie, @invalid_attrs)
+
       assert super_serie == SuperSeries.get_super_serie!(super_serie.id)
     end
 

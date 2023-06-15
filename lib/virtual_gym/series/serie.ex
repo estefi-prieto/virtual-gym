@@ -11,8 +11,8 @@ defmodule VirtualGym.Series.Serie do
     field :note, :string
     field :status, :string
 
-    belongs_to :exercise,  VirtualGym.Exercises.Exercise
-    belongs_to :super_serie,  VirtualGym.SuperSeries.SuperSerie
+    belongs_to :exercise, VirtualGym.Exercises.Exercise
+    belongs_to :super_serie, VirtualGym.SuperSeries.SuperSerie
     has_many :iterations, VirtualGym.Iterations.Iteration
 
     timestamps()

@@ -28,7 +28,8 @@ defmodule VirtualGymWeb.SuperSerieController do
   def update(conn, %{"id" => id, "super_serie" => super_serie_params}) do
     super_serie = SuperSeries.get_super_serie!(id)
 
-    with {:ok, %SuperSerie{} = super_serie} <- SuperSeries.update_super_serie(super_serie, super_serie_params) do
+    with {:ok, %SuperSerie{} = super_serie} <-
+           SuperSeries.update_super_serie(super_serie, super_serie_params) do
       render(conn, :show, super_serie: super_serie)
     end
   end

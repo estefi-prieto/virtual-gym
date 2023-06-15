@@ -10,9 +10,7 @@ defmodule VirtualGym.SuperSeriesFixtures do
   def super_serie_fixture(attrs \\ %{}) do
     {:ok, super_serie} =
       attrs
-      |> Enum.into(%{
-
-      })
+      |> Enum.into(%{})
       |> VirtualGym.SuperSeries.create_super_serie()
 
     super_serie

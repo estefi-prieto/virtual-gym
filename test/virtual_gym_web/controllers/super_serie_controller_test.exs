@@ -5,12 +5,8 @@ defmodule VirtualGymWeb.SuperSerieControllerTest do
 
   alias VirtualGym.SuperSeries.SuperSerie
 
-  @create_attrs %{
-
-  }
-  @update_attrs %{
-
-  }
+  @create_attrs %{}
+  @update_attrs %{}
   @invalid_attrs %{}
 
   setup %{conn: conn} do
@@ -45,7 +41,10 @@ defmodule VirtualGymWeb.SuperSerieControllerTest do
   describe "update super_serie" do
     setup [:create_super_serie]
 
-    test "renders super_serie when data is valid", %{conn: conn, super_serie: %SuperSerie{id: id} = super_serie} do
+    test "renders super_serie when data is valid", %{
+      conn: conn,
+      super_serie: %SuperSerie{id: id} = super_serie
+    } do
       conn = put(conn, ~p"/api/super_series/#{super_serie}", super_serie: @update_attrs)
       assert %{"id" => ^id} = json_response(conn, 200)["data"]
 
