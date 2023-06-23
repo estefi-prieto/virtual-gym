@@ -37,8 +37,8 @@ defmodule VirtualGymWeb.SuperSerieController do
   def delete(conn, %{"id" => id}) do
     super_serie = SuperSeries.get_super_serie!(id)
 
-    with {:ok, %SuperSerie{}} <- SuperSeries.delete_super_serie(super_serie) do
-      send_resp(conn, :no_content, "")
+    with {:ok, %SuperSerie{id: id}} <- SuperSeries.delete_super_serie(super_serie) do
+      json(conn, %{id: id})
     end
   end
 end

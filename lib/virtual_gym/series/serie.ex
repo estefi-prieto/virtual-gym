@@ -11,6 +11,7 @@ defmodule VirtualGym.Series.Serie do
     field :note, :string
     field :status, :string
 
+    belongs_to :activity, VirtualGym.Activities.Activity
     belongs_to :exercise, VirtualGym.Exercises.Exercise
     belongs_to :super_serie, VirtualGym.SuperSeries.SuperSerie
     has_many :iterations, VirtualGym.Iterations.Iteration
@@ -21,7 +22,7 @@ defmodule VirtualGym.Series.Serie do
   @doc false
   def changeset(serie, attrs) do
     serie
-    |> cast(attrs, [:note, :status, :exercise_id, :super_serie_id])
+    |> cast(attrs, [:note, :status, :exercise_id, :super_serie_id, :activity_id])
     |> validate_required([:note, :status, :exercise_id])
   end
 end

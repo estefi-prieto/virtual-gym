@@ -17,7 +17,8 @@ defmodule VirtualGymWeb.SuperSerieJSON do
 
   defp data(%SuperSerie{} = super_serie) do
     %{
-      id: super_serie.id
+      id: super_serie.id,
+      activity_id: super_serie.activity_id
     }
   end
 end
