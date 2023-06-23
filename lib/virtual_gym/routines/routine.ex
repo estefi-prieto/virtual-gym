@@ -8,6 +8,8 @@ defmodule VirtualGym.Routines.Routine do
     field :date, :string
     field :suggested_date, :string
 
+    has_many :activities, VirtualGym.Activities.Activity
+
     timestamps()
   end
 
