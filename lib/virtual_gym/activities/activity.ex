@@ -14,6 +14,7 @@ defmodule VirtualGym.Activities.Activity do
 
     has_one :serie, VirtualGym.Series.Serie
     has_one :super_serie, VirtualGym.SuperSeries.SuperSerie
+    belongs_to :routine, VirtualGym.Routines.Routine
 
     timestamps()
   end
@@ -21,7 +22,7 @@ defmodule VirtualGym.Activities.Activity do
   @doc false
   def changeset(activity, attrs) do
     activity
-    |> cast(attrs, [:order, :rounds])
+    |> cast(attrs, [:order, :rounds, :routine_id])
     |> validate_required([:order, :rounds])
   end
 end
