@@ -36,7 +36,7 @@ defmodule VirtualGymWeb.SerieController do
   def delete(conn, %{"id" => id}) do
     serie = Series.get_serie!(id)
 
-    with {:ok, %Serie{id: id}} <- Serie.delete_serie(serie) do
+    with {:ok, %Serie{id: id}} <- Series.delete_serie(serie) do
       json(conn, %{id: id})
     end
   end
