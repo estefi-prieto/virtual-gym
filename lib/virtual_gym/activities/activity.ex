@@ -12,6 +12,8 @@ defmodule VirtualGym.Activities.Activity do
     field :order, :integer
     field :rounds, :integer
 
+    has_one :super_serie, VirtualGym.SuperSeries.SuperSerie
+
     timestamps()
   end
 
