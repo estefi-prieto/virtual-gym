@@ -13,6 +13,7 @@ defmodule VirtualGym.Users.User do
     field :password, :string
 
     has_many :routines, VirtualGym.Routines.Routine
+    has_one :trainer, VirtualGym.Trainers.Trainer
 
     timestamps()
   end
