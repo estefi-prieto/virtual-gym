@@ -29,6 +29,7 @@ defmodule VirtualGymWeb.Router do
     resources "/super_series", SuperSerieController, except: [:new, :edit]
     resources "/activities", ActivityController, except: [:new, :edit]
     resources "/routines", RoutineController, except: [:new, :edit]
+    resources "/users", UserController, except: [:new, :edit]
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
