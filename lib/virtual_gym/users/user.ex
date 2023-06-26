@@ -1,4 +1,7 @@
 defmodule VirtualGym.Users.User do
+  @moduledoc """
+    This is the Model, here define struct and validations of a User.
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -8,6 +11,8 @@ defmodule VirtualGym.Users.User do
     field :email, :string
     field :name, :string
     field :password, :string
+
+    has_many :routines, VirtualGym.Routines.Routine
 
     timestamps()
   end

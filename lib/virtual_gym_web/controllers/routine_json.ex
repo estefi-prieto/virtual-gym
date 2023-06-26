@@ -19,7 +19,8 @@ defmodule VirtualGymWeb.RoutineJSON do
     %{
       id: routine.id,
       date: routine.date,
-      suggested_date: routine.suggested_date
+      suggested_date: routine.suggested_date,
+      user_id: routine.user_id
     }
   end
 end
