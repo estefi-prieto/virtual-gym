@@ -1,0 +1,395 @@
+{
+  "components": {
+    "responses": {},
+    "schemas": {
+      "Delete Exercise Response": {
+        "description": "Exercise deleted id and name",
+        "example": {
+          "id": "2a46d8f1-7781-46ce-bd65-893c6a51eda3",
+          "name": "hammer curl"
+        },
+        "properties": {
+          "id": {
+            "description": "Exercise id",
+            "format": "uuid",
+            "type": "string"
+          },
+          "name": {
+            "description": "Exercise name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Delete Exercise Response",
+        "type": "object"
+      },
+      "Exercise Index Response": {
+        "description": "List all created exercises",
+        "example": {
+          "data": [
+            {
+              "affected_muscles": [
+                "biceps"
+              ],
+              "id": "2a46d8f1-7781-46ce-bd65-893c6a51eda3",
+              "name": "hammer curl",
+              "recomendations": "Keep your back straight",
+              "video": "https://www.youtube.com/"
+            }
+          ]
+        },
+        "properties": {
+          "data": {
+            "description": "Exercises list",
+            "items": {
+              "$ref": "#/components/schemas/Exercise Response"
+            },
+            "required": [
+              "data"
+            ],
+            "type": "array"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Exercise Index Response",
+        "type": "object"
+      },
+      "Exercise Request": {
+        "description": "Exercise data",
+        "example": {
+          "exercise": {
+            "affected_muscles": [
+              "biceps"
+            ],
+            "name": "hammer curl",
+            "recomendations": "Keep your back straight",
+            "video": "https://www.youtube.com/"
+          }
+        },
+        "properties": {
+          "exercise": {
+            "description": "Exercise fields",
+            "properties": {
+              "affected_muscles": {
+                "description": "Strings List wich represent the the affected zones",
+                "type": "array"
+              },
+              "name": {
+                "description": "Exercise name",
+                "type": "string"
+              },
+              "recomendations": {
+                "description": "Advices about common errors and hot to prevent them",
+                "type": "string"
+              },
+              "video": {
+                "description": "Link to exercise explanation",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "affected_muscles"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "exercise"
+        ],
+        "title": "Exercise Request",
+        "type": "object"
+      },
+      "Exercise Response": {
+        "description": "Exercise created data content",
+        "example": {
+          "data": {
+            "affected_muscles": [
+              "biceps"
+            ],
+            "id": "2a46d8f1-7781-46ce-bd65-893c6a51eda3",
+            "name": "hammer curl",
+            "recomendations": "Keep your back straight",
+            "video": "https://www.youtube.com/"
+          }
+        },
+        "properties": {
+          "data": {
+            "description": "Exercise fields",
+            "properties": {
+              "affected_muscles": {
+                "description": "Strings List wich represent the the affected zones",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "id": {
+                "description": "Exercise id",
+                "format": "uuid",
+                "type": "string"
+              },
+              "name": {
+                "description": "Exercise name",
+                "type": "string"
+              },
+              "recomendations": {
+                "description": "Advices about common errors and hot to prevent them",
+                "type": "string"
+              },
+              "video": {
+                "description": "Link to exercise explanation",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "affected_muscles"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "data"
+        ],
+        "title": "Exercise Response",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "Virtual Gym",
+    "version": "1.0"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/exercises": {
+      "get": {
+        "callbacks": {},
+        "deprecated": false,
+        "description": "List an Exercises list",
+        "operationId": "ExerciseController.index",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Exercise Index Response"
+                }
+              }
+            },
+            "description": "Exercise"
+          }
+        },
+        "summary": "List Exercises",
+        "tags": [
+          "exercises"
+        ]
+      },
+      "post": {
+        "callbacks": {},
+        "deprecated": false,
+        "description": "Create an Exercise",
+        "operationId": "ExerciseController.create",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Exercise Request"
+              }
+            }
+          },
+          "description": "Create Exercise",
+          "required": false
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Exercise Response"
+                }
+              }
+            },
+            "description": "Exercise"
+          }
+        },
+        "summary": "Create Exercises",
+        "tags": [
+          "exercises"
+        ]
+      }
+    },
+    "/api/exercises/{id}": {
+      "delete": {
+        "callbacks": {},
+        "deprecated": false,
+        "description": "Delete an Exercise",
+        "operationId": "ExerciseController.delete",
+        "parameters": [
+          {
+            "description": "Excercise ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Delete Exercise Response"
+                }
+              }
+            },
+            "description": "Exercise"
+          }
+        },
+        "summary": "Delete Exercises",
+        "tags": [
+          "exercises"
+        ]
+      },
+      "get": {
+        "callbacks": {},
+        "deprecated": false,
+        "description": "Show an Exercise",
+        "operationId": "ExerciseController.show",
+        "parameters": [
+          {
+            "description": "Excercise ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Exercise Response"
+                }
+              }
+            },
+            "description": "Exercise"
+          }
+        },
+        "summary": "Show Exercises",
+        "tags": [
+          "exercises"
+        ]
+      },
+      "patch": {
+        "callbacks": {},
+        "deprecated": false,
+        "description": "Update an Exercise",
+        "operationId": "ExerciseController.update",
+        "parameters": [
+          {
+            "description": "Excercise ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Exercise Request"
+              }
+            }
+          },
+          "description": "Update Exercise",
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Exercise Response"
+                }
+              }
+            },
+            "description": "Exercise"
+          }
+        },
+        "summary": "Update Exercises",
+        "tags": [
+          "exercises"
+        ]
+      },
+      "put": {
+        "callbacks": {},
+        "deprecated": false,
+        "description": "Update an Exercise",
+        "operationId": "ExerciseController.update (2)",
+        "parameters": [
+          {
+            "description": "Excercise ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Exercise Request"
+              }
+            }
+          },
+          "description": "Update Exercise",
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Exercise Response"
+                }
+              }
+            },
+            "description": "Exercise"
+          }
+        },
+        "summary": "Update Exercises",
+        "tags": [
+          "exercises"
+        ]
+      }
+    }
+  },
+  "security": [],
+  "servers": [
+    {
+      "url": "http://localhost:4000",
+      "variables": {}
+    }
+  ],
+  "tags": []
+}
