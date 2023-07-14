@@ -12,6 +12,8 @@ defmodule VirtualGymWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug CORSPlug
+    plug OpenApiSpex.Plug.PutApiSpec, module: VirtualGymWeb.ApiSpec
   end
 
   scope "/", VirtualGymWeb do
@@ -31,6 +33,18 @@ defmodule VirtualGymWeb.Router do
     resources "/routines", RoutineController, except: [:new, :edit]
     resources "/users", UserController, except: [:new, :edit]
     resources "/trainers", TrainerController, except: [:new, :edit]
+  end
+
+  scope "/api" do
+    pipe_through(:api)
+
+    get("/openapi", OpenApiSpex.Plug.RenderSpec, :show)
+
+    get("/v1/swaggerui", OpenApiSpex.Plug.SwaggerUI,
+      path: "/api/openapi",
+      default_model_expand_depth: 3,
+      display_operation_id: true
+    )
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
